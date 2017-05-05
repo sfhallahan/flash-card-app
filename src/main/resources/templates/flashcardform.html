@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Create new flash card</title>
+</head>
+
+<body>
+<h1>Flash Card App</h1>
+	
+<form class="form-horizontal" th:object="${flashcard}" th:action="@{/flashcard/new-card}" method="post">
+	<input type="hidden" th:field="*{cardId}" />
+	
+	<h2>Question:</h2>
+	<textarea name="question" th:field="*{question}" cols="20" rows="4"></textarea>
+	
+	<h2>Answer</h2>
+	<textarea name="answer" th:field="*{answer}" cols="20" rows="4"></textarea>
+	<input type="submit" value="Save" />
+</form>
+	
+</body>
+</html>
