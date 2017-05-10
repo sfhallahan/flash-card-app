@@ -8,32 +8,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class FlashCard extends AbstractDomainClass {
+public class QuestionCategory {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer cardId;
 	private Integer categoryId;
-	private String question;
-	private String answer;
+	private String categoryName;
 	private Date dateCreated;
 	private Date lastUpdated;
-
-	public FlashCard(String question, String answer) {
-		this.question = question;
-		this.answer = answer;
-	}
-	
-	public FlashCard(){}
-	
-	
-	public Integer getCardId() {
-		return cardId;
-	}
-
-	public void setCardId(Integer cardId) {
-		this.cardId = cardId;
-	}
 
 	public Integer getCategoryId() {
 		return categoryId;
@@ -43,20 +25,12 @@ public class FlashCard extends AbstractDomainClass {
 		this.categoryId = categoryId;
 	}
 
-	public String getQuestion() {
-		return question;
+	public String getCategoryName() {
+		return categoryName;
 	}
 
-	public void setQuestion(String question) {
-		this.question = question;
-	}
-
-	public String getAnswer() {
-		return answer;
-	}
-
-	public void setAnswer(String answer) {
-		this.answer = answer;
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
 	}
 
 	public Date getDateCreated() {
@@ -74,7 +48,4 @@ public class FlashCard extends AbstractDomainClass {
 	public void setLastUpdated(Date lastUpdated) {
 		this.lastUpdated = lastUpdated;
 	}
-
-
-
 }

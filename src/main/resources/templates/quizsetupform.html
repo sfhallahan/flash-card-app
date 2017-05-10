@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Create new Quiz</title>
+</head>
+
+<body>
+<h1>Create new quiz</h1>
+	
+<form class="form-horizontal" th:object="${cardBuilder}" th:action="@{/flashcard/quiz-setup}" method="post">
+	
+	<h2>Number of questions</h2>
+	<input type="text" name="questionCount" th:field="*{questionCount}" />
+	
+	<input type="submit" value="Start Quiz!" />
+</form>
+	
+</body>
+</html>

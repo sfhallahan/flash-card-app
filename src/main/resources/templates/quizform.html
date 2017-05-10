@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Quiz</title>
+</head>
+
+<body>
+<h1>Quiz</h1>
+	
+<form class="form-horizontal" th:object="${flashcard}" th:object="${currentCard}" th:action="@{/flashcard/quiz/(id=${currentCard})}" method="post">
+	<input type="hidden" th:field="*{cardId}" />
+	
+	<h2>Question:</h2>
+	<p class="question" th:text="${flashcard.question}">Question Goes here</p>
+	
+	<h2>Answer</h2>
+	<p class="answer" th:text="${flashcard.answer}">Answer Goes here</p>
+	<input type="submit" value="Next Question" />
+</form>
+	
+</body>
+</html>

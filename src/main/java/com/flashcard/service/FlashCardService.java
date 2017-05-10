@@ -1,6 +1,9 @@
 package com.flashcard.service;
 
+import java.util.ArrayList;
+
 import com.flashcard.domain.FlashCard;
+import com.flashcard.domain.QuestionSetBuilder;
 
 public interface FlashCardService {
 	
@@ -12,6 +15,10 @@ public interface FlashCardService {
  * TODO Update Flash card service with remain methods
 	FlashCard deleteFlashCard();
 	
-	List<FlashCard> getAllFlashCards();
-	*/
+	Iterable<FlashCard> findFlashCardByCategory()
+	
+*/	
+	Iterable<FlashCard> getAllFlashCards();
+	
+	ArrayList<FlashCard> buildQuestionSet(QuestionSetBuilder builder);
 }
