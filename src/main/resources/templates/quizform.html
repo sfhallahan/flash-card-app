@@ -1,22 +1,71 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
 <head>
-	<title>Quiz</title>
+  <title>Quiz</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
 <body>
-<h1>Quiz</h1>
+<div class="container">
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">Flash Card</a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="/">Home</a></li>
+				<li><a href="/flashcard/new-card">Create Cards</a></li>
+				<li><a href="/flashcard/quiz-setup">New Quiz</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="#"><span class="glyphicon glyphicon-user"></span>
+						My Profile</a></li>
+				<li>
+				<a href="#"><span class="glyphicon glyphicon-log-in"></span>
+						Sign out</a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<h1>Quiz</h1>
+
+	<div th:object="${flashcard}">
+		<input type="hidden" th:field="*{id}" />
+		<div class="form-group">
+			<label for="question" class="control-label">Question:</label>
+			<p class="question" id="question" th:text="${flashcard.question}">Question Goes here</p>
+		</div>
+		<div id="answer-div" class="collapse form-group">
+			<label for="answer" class="control-label">Answer</label>
+			<p class="answer" id="answer" th:text="${flashcard.answer}">Answer Goes here</p>
+		</div>
+	</div>
 	
-<form class="form-horizontal" th:object="${flashcard}" th:object="${currentCard}" th:action="@{/flashcard/quiz/(id=${currentCard})}" method="post">
-	<input type="hidden" th:field="*{cardId}" />
+	<button href="#answer-div" data-toggle="collapse" class="btn btn-default btn-group">Show/Hide Answer</button>
+
+	<form th:object="${flashcard}" th:action="@{''}" method="post">
+		<div class="form-group" style="margin-top: 5px">
+			<input type="submit" class="btn btn-default btn-group" value="Next Question" role="button"/>
+		</div>
+	</form>
+
+
 	
-	<h2>Question:</h2>
-	<p class="question" th:text="${flashcard.question}">Question Goes here</p>
-	
-	<h2>Answer</h2>
-	<p class="answer" th:text="${flashcard.answer}">Answer Goes here</p>
-	<input type="submit" value="Next Question" />
-</form>
-	
+<script>	
+
+	function showHideAnswer() {
+		var x = document.getElementById("answer");
+		if (x.style.display === 'none') {
+			x.style.display = 'block';
+		} else {
+			x.style.display = 'none';
+		}
+	}
+</script>
+</div>
 </body>
 </html>

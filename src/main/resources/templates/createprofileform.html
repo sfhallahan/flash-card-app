@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
 <head>
-	<title>Create new flash card</title>
+	<title>Create new profile</title>
 	<meta charset="utf-8" />
   	<meta name="viewport" content="width=device-width, initial-scale=1" />
   	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
-
 <body>
 <div class="container">
+
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -23,26 +23,37 @@
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="#"><span class="glyphicon glyphicon-user"></span>
-						Sign Up</a></li>
-				<li><a href="#"><span class="glyphicon glyphicon-log-in"></span>
-						Login</a></li>
+						My Profile</a></li>
+				<li><a href="#"><span class="glyphicon glyphicon-log-out"></span>
+						Logout</a></li>
 			</ul>
 		</div>
 	</nav>
 
 
-<h1>Flash Card App</h1>
+<h1>Create New Profile</h1>
 
-<form th:object="${flashcard}" th:action="@{/flashcard/new-card}" method="post">
+<form th:object="${userProfile}" th:action="@{/create-new-profile}" method="post">
 
-	<input type="hidden" class="form-control" th:field="*{id}" />
 	<div class="form-group">
-		<label for="question" class="control-label">Question:</label>
-		<textarea name="question" class="form-control" th:field="*{question}" id="question"></textarea>
+		<label for="username" class="control-label">Username:</label>
+		<input type="text" name="username" class="form-control" th:field="*{username}" id="username" />
 	</div>
 	<div class="form-group">
-		<label for="answer" class="control-label">Answer</label>
-		<textarea name="answer" class="form-control" th:field="*{answer}" id="answer"></textarea>
+		<label for="password" class="control-label">Password:</label>
+		<input type="password" name="answer" class="form-control" th:field="*{password}" id="password" />
+	</div>
+	<div class="form-group">
+		<label for="firstName" class="control-label">First name:</label>
+		<input type="text" name="firstName" class="form-control" th:field="*{firstName}" id="firstName" />
+	</div>
+	<div class="form-group">
+		<label for="lastName" class="control-label">Last name:</label>
+		<input type="text" name="lastName" class="form-control" th:field="*{lastName}" id="lastName" />
+	</div>
+		<div class="form-group">
+		<label for="email" class="control-label">Email:</label>
+		<input type="text" name="email" class="form-control" th:field="*{email}" id="email" />
 	</div>
 	<button type="submit" class="btn btn-default">Save</button>
 

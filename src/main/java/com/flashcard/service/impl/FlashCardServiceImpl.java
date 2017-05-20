@@ -13,13 +13,13 @@ import com.flashcard.service.FlashCardService;
 @Service
 public class FlashCardServiceImpl implements FlashCardService {
 
-	private	FlashCardRepository flashCardRepo;
-	
+	private FlashCardRepository flashCardRepo;
+
 	@Autowired
 	void setFlashCardRepository(FlashCardRepository flashCardRepo) {
 		this.flashCardRepo = flashCardRepo;
 	}
-	
+
 	@Override
 	public FlashCard getFlashCard(Integer id) {
 		return flashCardRepo.findOne(id);
@@ -34,13 +34,12 @@ public class FlashCardServiceImpl implements FlashCardService {
 	public Iterable<FlashCard> getAllFlashCards() {
 		return flashCardRepo.findAll();
 	}
-	
+
 	@Override
 	public ArrayList<FlashCard> buildQuestionSet(QuestionSetBuilder builder) {
 		Iterable<FlashCard> potentialCards = getAllFlashCards();
 		ArrayList<FlashCard> questionSet = builder.randomizeCards(potentialCards);
 		return questionSet;
 	}
-	
 
 }

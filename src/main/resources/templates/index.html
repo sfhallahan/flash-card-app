@@ -1,12 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
 <head>
 	<title>Flash Card Home</title>
+	<meta charset="utf-8" />
+  	<meta name="viewport" content="width=device-width, initial-scale=1" />
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
 <body>
+<div class="container">
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">Flash Card</a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="/">Home</a></li>
+				<li><a href="/flashcard/new-card">Create Cards</a></li>
+				<li><a href="/flashcard/quiz-setup">New Quiz</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="#"><span class="glyphicon glyphicon-user"></span>
+						Sign Up</a></li>
+				<li><a href="#"><span class="glyphicon glyphicon-log-in"></span>
+						Login</a></li>
+			</ul>
+		</div>
+	</nav>
+	
 	<h1>Flash Card App</h1>
-	<a href="/flashcard/new-card">Create new card</a>
-
+	
+	<div class="welcome">
+		<span sec:authorize="isAuthenticated()">Welcome <span sec:authentication="name"></span></span>
+	</div>
+	
+	<a href="#" th:href="@{/flashcard/new-card}" class="btn btn-info" role="button">Create new card</a>
+	<a href="#" th:href="@{/flashcard/quiz-setup}" class="btn btn-info" role="button">Start a quiz</a>
+</div>
 </body>
 </html>

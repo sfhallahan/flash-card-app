@@ -1,38 +1,21 @@
 package com.flashcard.domain;
 
-import java.util.Date;
-
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 @Entity
 public class FlashCard extends AbstractDomainClass {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer cardId;
 	private Integer categoryId;
 	private String question;
 	private String answer;
-	private Date dateCreated;
-	private Date lastUpdated;
 
 	public FlashCard(String question, String answer) {
 		this.question = question;
 		this.answer = answer;
 	}
-	
-	public FlashCard(){}
-	
-	
-	public Integer getCardId() {
-		return cardId;
-	}
-
-	public void setCardId(Integer cardId) {
-		this.cardId = cardId;
+		
+	public FlashCard() {
+		// Empty constructor
 	}
 
 	public Integer getCategoryId() {
@@ -58,23 +41,5 @@ public class FlashCard extends AbstractDomainClass {
 	public void setAnswer(String answer) {
 		this.answer = answer;
 	}
-
-	public Date getDateCreated() {
-		return dateCreated;
-	}
-
-	public void setDateCreated(Date dateCreated) {
-		this.dateCreated = dateCreated;
-	}
-
-	public Date getLastUpdated() {
-		return lastUpdated;
-	}
-
-	public void setLastUpdated(Date lastUpdated) {
-		this.lastUpdated = lastUpdated;
-	}
-
-
 
 }
