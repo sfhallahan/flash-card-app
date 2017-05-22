@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.flashcard.domain.FlashCard;
-import com.flashcard.domain.QuestionSetBuilder;
 import com.flashcard.repository.FlashCardRepository;
 import com.flashcard.service.FlashCardService;
+import com.flashcard.util.QuestionSetBuilder;
 
 @Service
 public class FlashCardServiceImpl implements FlashCardService {

@@ -14,8 +14,7 @@ public class Role extends AbstractDomainClass {
 
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable
-	// ~ defaults to @JoinTable(name = "USER_ROLE", joinColumns =
-	// @JoinColumn(name = "role_id"),
+	// ~ defaults to @JoinTable(name = "USER_ROLE", joinColumns = @JoinColumn(name = "role_id"),
 	// inverseJoinColumns = @joinColumn(name = "user_id"))
 	private List<UserProfile> users = new ArrayList<>();
 

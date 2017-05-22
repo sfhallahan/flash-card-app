@@ -6,9 +6,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.flashcard.domain.QuestionSetBuilder;
 import com.flashcard.domain.UserProfile;
 import com.flashcard.service.UserProfileService;
+import com.flashcard.util.QuestionSetBuilder;
 
 @Controller
 @RequestMapping("/")

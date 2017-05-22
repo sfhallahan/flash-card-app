@@ -12,6 +12,8 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
@@ -30,7 +32,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         passwordEncoder.setPasswordEncryptor(passwordEncryptor);
         return passwordEncoder;
     }
-
+    
     @Bean
     public DaoAuthenticationProvider daoAuthenticationProvider(PasswordEncoder passwordEncoder,
                                                                UserDetailsService userDetailsService){
@@ -54,7 +56,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 			.authorizeRequests().antMatchers("/", "/flashcard", "/console/**").permitAll()
 			.anyRequest().authenticated()
 			.and()
-			.formLogin().loginPage("/login").permitAll()
+			.formLogin().loginPage("/login").defaultSuccessUrl("/", true).permitAll()
 			.and()
 			.logout().permitAll();
 
