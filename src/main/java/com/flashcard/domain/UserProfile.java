@@ -11,6 +11,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -34,9 +35,7 @@ public class UserProfile extends AbstractDomainClass {
 	private Boolean enabled =true;
 	
 	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable
-    // ~ defaults to @JoinTable(name = "USER_ROLE", joinColumns = @JoinColumn(name = "user_id"),
-    //     inverseJoinColumns = @joinColumn(name = "role_id"))
+	@JoinTable(name = "USER_PROFILE_ROLE", joinColumns = @JoinColumn(name = "USER_PROFILE_ID"), inverseJoinColumns = @JoinColumn(name = "ROLE_ID"))
     private List<Role> roles = new ArrayList<>();
 	
 	@Column(name = "FAILED_LOGIN_ATTEMPTS")
