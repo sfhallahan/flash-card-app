@@ -53,7 +53,6 @@ public class QuestionLoader implements ApplicationListener<ContextRefreshedEvent
 	
 	private void loadQuestions() {	
 		FlashCard flashCardOne = new FlashCard();
-		flashCardOne.setId(1000);
 		flashCardOne.setQuestion("What does EC2 stand for?");
 		flashCardOne.setAnswer("Elastic Compute Cloud");
 		Date currentDateTime = new Date();
@@ -64,7 +63,6 @@ public class QuestionLoader implements ApplicationListener<ContextRefreshedEvent
 		log.info("Saved Flash Card " + flashCardOne.getId());
 
 		FlashCard flashCardTwo = new FlashCard();
-		flashCardTwo.setId(1001);
 		flashCardTwo.setQuestion("What are the 4 pricing options you have for EC2 instances?");
 		flashCardTwo.setAnswer("On-demand, spot, reserved, dedicated hosts");
 		Date currentDateTime2 = new Date();
@@ -75,7 +73,6 @@ public class QuestionLoader implements ApplicationListener<ContextRefreshedEvent
 		log.info("Saved Flash Card " + flashCardTwo.getId());
 
 		FlashCard flashCardThree = new FlashCard();
-		flashCardThree.setId(1002);
 		flashCardThree.setQuestion("What are the 5 different volume types available for EBS?");
 		flashCardThree.setAnswer("General Purpose SSD (GP2), Provisioned IOPS SSD (IO1)"
 				+ "Throughput Optimized HDD (ST1), Cold HDD (SC1), Magnetic (Standard)");
@@ -87,7 +84,6 @@ public class QuestionLoader implements ApplicationListener<ContextRefreshedEvent
 		log.info("Saved Flash Card " + flashCardThree.getId());
 
 		FlashCard flashCardFour = new FlashCard();
-		flashCardFour.setId(1003);
 		flashCardFour.setQuestion("What are the 4 routing options you have for Route 53");
 		flashCardFour.setAnswer("Simple, weighted, Latency, Failover, Geolocation");
 		Date currentDateTime4 = new Date();

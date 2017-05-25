@@ -2,25 +2,32 @@ package com.flashcard.domain;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Version;
 
 @MappedSuperclass
 public abstract class AbstractDomainClass implements DomainObject {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQ")
+	@SequenceGenerator(name = "SEQ", sequenceName = "HIBERNATE_SEQUENCE")
 	Integer id;
 
 	@Version
+	@Column(name = "VERSION")
 	private Integer version;
-
+	
+	@Column(name = "DATE_CREATED")
 	private Date dateCreated;
+	
+	@Column(name = "LAST_UPDATED")
 	private Date lastUpdated;
 
 	@Override

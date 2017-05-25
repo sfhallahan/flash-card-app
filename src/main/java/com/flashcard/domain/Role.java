@@ -1,21 +1,25 @@
 package com.flashcard.domain;
 
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(name = "ROLE")
+@AttributeOverrides({@AttributeOverride(name = "id", column = @Column(name = "role_id"))})
 public class Role extends AbstractDomainClass {
 
+	@Column(name = "ROLE")
 	private String role;
 
-	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable
-	// ~ defaults to @JoinTable(name = "USER_ROLE", joinColumns = @JoinColumn(name = "role_id"),
-	// inverseJoinColumns = @joinColumn(name = "user_id"))
+	@ManyToMany(mappedBy = "roles", fetch = FetchType.EAGER)
 	private List<UserProfile> users = new ArrayList<>();
 
 	public String getRole() {
