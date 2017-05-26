@@ -1,17 +1,20 @@
-package com.flashcard.domain;
+package com.flashcard.util;
 
 import java.util.ArrayList;
 import java.util.Collections;
+
+import com.flashcard.domain.FlashCard;
+import com.flashcard.domain.Category;
 import com.google.common.collect.Lists;
 
 
 public class QuestionSetBuilder {
 	
 	private int questionCount;
-	private QuestionCategory category;
+	private Category category;
 	
 	
-	public QuestionSetBuilder(int questionCount, QuestionCategory category){
+	public QuestionSetBuilder(int questionCount, Category category){
 		this.questionCount = questionCount;
 		this.category = category;
 	}
@@ -56,12 +59,12 @@ public class QuestionSetBuilder {
 	}
 
 
-	public QuestionCategory getCategory() {
+	public Category getCategory() {
 		return category;
 	}
 
 
-	public void setCategory(QuestionCategory category) {
+	public void setCategory(Category category) {
 		this.category = category;
 	}
 	

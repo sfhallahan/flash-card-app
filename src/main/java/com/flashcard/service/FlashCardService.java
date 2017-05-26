@@ -3,7 +3,7 @@ package com.flashcard.service;
 import java.util.ArrayList;
 
 import com.flashcard.domain.FlashCard;
-import com.flashcard.domain.QuestionSetBuilder;
+import com.flashcard.util.QuestionSetBuilder;
 
 public interface FlashCardService {
 	
