@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,14 +15,12 @@ import com.flashcard.domain.FlashCard;
 import com.flashcard.service.FlashCardService;
 import com.flashcard.util.QuestionSetBuilder;
 
-@SessionAttributes("questionSet")
+@SessionAttributes({ "questionSet", "questionSetBuilder" })
 @Controller
 @RequestMapping("/flashcard")
 public class FlashCardController {
 
 	private FlashCardService flashCardService;
-	private ArrayList<FlashCard> questionSet;
-	private QuestionSetBuilder builder;
 
 	@Autowired
 	public void setFlashCardService(FlashCardService flashCardService) {
@@ -42,21 +41,22 @@ public class FlashCardController {
 
 	@RequestMapping(method = RequestMethod.GET, value = "/quiz-setup")
 	public String quizSetup(Model model) {
-		model.addAttribute("cardBuilder", new QuestionSetBuilder());
+		model.addAttribute("questionSetBuilder", new QuestionSetBuilder());
 		return "quizsetupform";
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "/quiz-setup")
-	public String buildQuiz(QuestionSetBuilder builder) {
-		this.builder = builder;
-		this.questionSet = flashCardService.buildQuestionSet(builder);
+	public String buildQuiz(Model model, @ModelAttribute("questionSetBuilder") QuestionSetBuilder questionSetBuilder) {
+		ArrayList<FlashCard> questionSet = flashCardService.buildQuestionSet(questionSetBuilder);
+		model.addAttribute("questionSet", questionSet);
 		return "redirect:/flashcard/quiz/1";
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "/quiz/{cardNumber}")
-	public String nextQuestion(@PathVariable int cardNumber) {
-		if (cardNumber == builder.getQuestionCount()) {
-			return "index";
+	public String nextQuestion(@PathVariable int cardNumber,
+			@ModelAttribute("questionSetBuilder") QuestionSetBuilder questionSetBuilder) {
+		if (cardNumber == questionSetBuilder.getQuestionCount()) {
+			return "redirect:/";
 		} else {
 			cardNumber = cardNumber + 1;
 			return "redirect:/flashcard/quiz/" + cardNumber;
@@ -64,7 +64,8 @@ public class FlashCardController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/quiz/{cardNumber}")
-	public String updateNextQuestion(Model model, @PathVariable int cardNumber) {
+	public String updateNextQuestion(Model model, @PathVariable int cardNumber,
+			@ModelAttribute("questionSet") ArrayList<FlashCard> questionSet) {
 		model.addAttribute("flashcard", questionSet.get(cardNumber - 1));
 		return "quizform";
 	}
