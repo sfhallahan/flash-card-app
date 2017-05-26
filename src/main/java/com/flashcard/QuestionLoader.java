@@ -41,11 +41,11 @@ public class QuestionLoader implements ApplicationListener<ContextRefreshedEvent
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent event) {
 //		loadCategories();
-		loadQuestions();
-		loadUsers();
-		loadRoles();
-		assignUsersToUserRole();
-		assignUsersToAdminRole();
+//		loadQuestions();
+//		loadUsers();
+//		loadRoles();
+//		assignUsersToUserRole();
+//		assignUsersToAdminRole();
 	}
 	
 //	private void loadCategoies() {	
