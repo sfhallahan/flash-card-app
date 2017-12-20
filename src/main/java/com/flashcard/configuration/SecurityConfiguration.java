@@ -51,10 +51,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
 		httpSecurity
-			.authorizeRequests().antMatchers("/create-new-profile").permitAll()
+			.authorizeRequests().antMatchers("/create-new-profile",  "/console/**").permitAll()
 			.and()	
-			.authorizeRequests().antMatchers("/", "/flashcard", "/console/**").permitAll()
-			.anyRequest().authenticated()
+			.authorizeRequests().anyRequest().authenticated()
 			.and()
 			.formLogin().loginPage("/login").defaultSuccessUrl("/", true).permitAll()
 			.and()
