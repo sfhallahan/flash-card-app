@@ -42,7 +42,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
- <!-- Database Dependencies -->		
+ <!-- Oracle Database Dependencies -->		
 		<dependency>
 			<groupId>com.oracle</groupId>
 			<artifactId>ojdbc6</artifactId>
@@ -52,12 +52,11 @@
 			<groupId>com.zaxxer</groupId>
 			<artifactId>HikariCP</artifactId>
 		</dependency>
-<!-- 	Removing in memory H2 DB
+<!-- In memory H2 DB -->
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
-		</dependency>
- -->		
+		</dependency>	
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>

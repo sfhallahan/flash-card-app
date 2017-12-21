@@ -3,6 +3,7 @@ package com.flashcard;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
+import org.springframework.context.annotation.Profile;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 import com.flashcard.domain.FlashCard;
@@ -15,6 +16,7 @@ import com.flashcard.service.UserProfileService;
 import java.util.Date;
 import java.util.List;
 
+@Profile("h2")
 @Component
 public class QuestionLoader implements ApplicationListener<ContextRefreshedEvent> {
 
@@ -40,16 +42,16 @@ public class QuestionLoader implements ApplicationListener<ContextRefreshedEvent
 
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent event) {
-//		loadCategories();
+		//loadCategories();
 		loadQuestions();
 		loadUsers();
-		loadRoles();
+ 		loadRoles();
 		assignUsersToUserRole();
 		assignUsersToAdminRole();
 	}
 	
-//	private void loadCategoies() {	
-//	}
+	private void loadCategoies() {	
+	}
 	
 	private void loadQuestions() {	
 		FlashCard flashCardOne = new FlashCard();

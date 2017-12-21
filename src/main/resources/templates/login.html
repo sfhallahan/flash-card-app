@@ -2,59 +2,39 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
 <head>
 	<title>FlashCard - Login</title>
-	<meta charset="utf-8" />
-  	<meta name="viewport" content="width=device-width, initial-scale=1" />
-  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!--/*/ <th:block th:include="fragments/headfragment :: head"></th:block> /*/-->
 </head>
 
 <body>
-<div class="container">
-	<nav class="navbar navbar-inverse">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="#">Flash Card</a>
-			</div>
-<!-- 			<ul class="nav navbar-nav">
-				<li class="active"><a href="/">Home</a></li>
-				<li><a href="/flashcard/new-card">Create Cards</a></li>
-				<li><a href="/flashcard/quiz-setup">New Quiz</a></li>
-			</ul>
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#"><span class="glyphicon glyphicon-user"></span>
-						Sign Up</a></li>
-				<li><a href="#"><span class="glyphicon glyphicon-log-in"></span>
-						Login</a></li>
-			</ul> -->
-		</div>
-	</nav>
+<div class="container-fluid">
 
-<div th:if="${param.error}">
-	<label style="color:red">Invalid username and password.</label>
-</div>
-<div th:if="${param.logout}">
-	<label>You have been logged out</label>
-</div>
+<!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
 
-<h1>Login</h1>
-
-<form th:action="@{/login}" method="post">
-
+<div class="centered-container">
+	<h2 class="header">Login</h2>
+	<div th:if="${param.error}">
+		<label class="error">Invalid username and password.</label>
+	</div>
+	<div th:if="${param.logout}">
+		<label class="error">You have been logged out</label>
+	</div>
+<form th:action="@{/login}" method="post" class="card">
 	<div class="form-group">
-		<label for="username" class="control-label">Username:</label>
-		<input type="text" name="username" class="form-control" id="username" />
+	  <label for="username" class="control-label">Username:</label>
+	  <input type="text" name="username" class="form-control" id="username" />
 	</div>
 	<div class="form-group">
-		<label for="password" class="control-label">Password:</label>
-		<input type="password" name="password" class="form-control" id="password" />
+	  <label for="password" class="control-label">Password:</label>
+	  <input type="password" name="password" class="form-control" id="password" />
 	</div>
-	<button type="submit" class="btn btn-default">Login</button>
-</form>
+	<div class="button-container">
+	  <button type="submit" class="login-button btn btn-default">Login</button>
+	  <a href="/create-new-profile" class="btn btn-info" role="button">Create a new profile</a>
+	</div>
 
-<div style="margin-top:5px">
-	<a href="/create-new-profile" class="btn btn-info" role="button">Create a new profile</a>
+  </form>
 </div>
+
 
 </div>
 </body>
