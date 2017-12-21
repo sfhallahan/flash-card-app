@@ -45,9 +45,9 @@ public class BaseController {
 	}
 	
 	@RequestMapping(method=RequestMethod.POST, value="/create-new-profile")
-	public String saveNewProfile(Model model, UserProfile userProfile){
+	public String saveNewProfile(UserProfile userProfile){
+		System.out.println(userProfile.getFirstName());
 		userProfileService.saveOrUpdate(userProfile);
-		model.addAttribute("userProfile", userProfile);
 		return "redirect:/";
 	}
 	

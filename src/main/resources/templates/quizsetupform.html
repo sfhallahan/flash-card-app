@@ -6,18 +6,20 @@
 </head>
 
 <body>
-<div class="container">
+<div class="container-fluid">
 <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
-
-<h1>Create new quiz</h1>
-	
+<h3 class="header">Create new quiz</h3>
+<div class="centered-container card">
 <form th:object="${questionSetBuilder}" th:action="@{/flashcard/quiz-setup}" method="post">
 	<div class="form-group">
 	<label for="questionCount" class="control-label">Number of questions:</label>
 	<input type="text" id="questionCount" class="form-control" name="questionCount" th:field="*{questionCount}" />
 	</div>
-	<input type="submit" class="btn btn-info" value="Start Quiz!" />
+	<input type="submit" class="btn btn-info login-button" value="Start Quiz!" />
+	<a href="#" th:href="@{/}" class="login-button btn btn-default login-button" role="button">Cancel</a>
+	 
 </form>
+</div>
 
 
 </div>	

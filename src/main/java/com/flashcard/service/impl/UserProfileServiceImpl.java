@@ -52,10 +52,11 @@ public class UserProfileServiceImpl implements UserProfileService {
 
 	@Override
 	public UserProfile saveOrUpdate(UserProfile user) {
+		System.out.println("in saveOrUpdate");
 		if (user.getPassword() != null) {
 			user.setEncryptedPassword(encryptionService.encryptString(user.getPassword()));
 		}
-		if (user.getRoles().isEmpty()) {
+		if (user.getRoles() != null || user.getRoles().isEmpty()) {
 			List<Role> roles = new ArrayList<>();
 			roles = (List<Role>) roleService.listAll();
 			roles.forEach(role -> {
